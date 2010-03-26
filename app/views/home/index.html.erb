@@ -1,0 +1,33 @@
+<h1>CSS from <%= @count%> sites</h1>
+
+<table>
+  <tr>
+    <td colspan="3">Most commonly used element class names</td>
+  </tr>
+  <tr>
+    <th>Count</th>
+    <th>Tag</th>
+  </tr>
+  <% @top_classes.each do |tag| %>
+      <tr>
+        <td><%= tag.big_count %></td>
+        <td><%= tag.name %></td>
+      </tr>
+  <%end%>
+</table>
+
+<table>
+  <tr>
+    <td colspan="3">Most commonly used element id names</td>
+  </tr>
+  <tr>
+    <th>Count</th>
+    <th>Tag</th>
+  </tr>
+  <% @top_css_ids.each do |id| %>
+      <tr>
+        <td><%= id.big_count %></td>
+        <td><%= id.name %></td>
+      </tr>
+  <%end%>
+</table>
