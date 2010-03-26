@@ -15,8 +15,8 @@ task :sites => :environment do
       ids = doc.css('@id')
       css_ids = ids.map(&:value).join(", ") if ids
       site = Site.new(:url => url)
-      p site.css_class_list = css_classes if css_classes
-      p site.css_id_list = css_ids if css_ids
+      site.css_class_list = css_classes if css_classes
+      site.css_id_list = css_ids if css_ids
       site.save
     end
     rescue Timeout::Error
