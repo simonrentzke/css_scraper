@@ -9,12 +9,12 @@ task :sites => :environment do
     p "Finding css nonsense for #{url}"
     website = Site.find_by_url(url)
     if !website
+      site = Site.create(:url => url)
       doc = Nokogiri::HTML(open("http://#{url}"))
       css = doc.css('@class')
       css_classes = css.map(&:value).join(", ") if css
       ids = doc.css('@id')
       css_ids = ids.map(&:value).join(", ") if ids
-      site = Site.new(:url => url)
       site.css_class_list = css_classes if css_classes
       site.css_id_list = css_ids if css_ids
       site.save
